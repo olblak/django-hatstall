@@ -20,14 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# Generate a new one during deployment with:
-# python -c "import random; print(''.join(random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*(-_=+)') for i in range(50)))"
-SECRET_KEY = ''
+SECRET_KEY = os.getenv('HATSTALL_SECRET_KEY','4312n0y@7=@=ove%c0cpgo4&2&ndzjm+i%px@irubkxkmm8+p#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('HATSTALL_DEBUG',False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('HATSTALL_ALLOWED_HOST','').split(',')
+#ALLOWED_HOSTS = os.getenv('HATSTALL_ALLOWED_HOST','[]')
 
 
 # Application definition
@@ -106,15 +105,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = os.getenv('HATSTALL_LANGUAGE_CODE','en-us')
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.getenv('HATSTALL_TIME_ZONE', 'UTC')
 
-USE_I18N = True
+USE_I18N = os.getenv('HATSTALL_USE_I18N', True)
 
-USE_L10N = True
+USE_L10N = os.getenv('HATSTALL_USE_L10N', True)
 
-USE_TZ = True
+USE_TZ = os.getenv('HATSTALL_USE_TZ',True)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -122,3 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ('django_hatstall/templates/static/',)
+STATIC_ROOT = os.getenv('HATSTALL_STATIC','')
