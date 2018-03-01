@@ -26,8 +26,6 @@ SECRET_KEY = os.getenv('HATSTALL_SECRET_KEY','4312n0y@7=@=ove%c0cpgo4&2&ndzjm+i%
 DEBUG = os.getenv('HATSTALL_DEBUG',False)
 
 ALLOWED_HOSTS = os.getenv('HATSTALL_ALLOWED_HOST','').split(',')
-#ALLOWED_HOSTS = os.getenv('HATSTALL_ALLOWED_HOST','[]')
-
 
 # Application definition
 
@@ -49,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_hatstall.urls'
@@ -119,6 +118,10 @@ USE_TZ = os.getenv('HATSTALL_USE_TZ',True)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 STATICFILES_DIRS = ('django_hatstall/templates/static/',)
-STATIC_ROOT = os.getenv('HATSTALL_STATIC','')
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
