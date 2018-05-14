@@ -2,9 +2,14 @@
 # GPLv3 License
 
 FROM debian:stretch-slim
-MAINTAINER Alvaro del Castillo <acs@bitergia.com>
 
 ARG HATSTALL_VERSION
+
+LABEL \
+  maintainer="Alvaro del Castillo <acs@bitergia.com>" \
+  description="Hatstall is a web interface to manage sortinghat database" \
+  project="https://github.com/chaoss/grimoirelab-hatstall" \
+  version="$HATSTALL_VERSION"
 
 EXPOSE 80
 
@@ -61,8 +66,6 @@ COPY django-hatstall ${DEPLOY_USER_DIR}/django-hatstall
 
 COPY docker/apache-hatstall.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/apache-hatstall.conf /etc/apache2/sites-enabled/000-default.conf
-
-#RUN a2enmod ssl
 
 ADD docker/stage /entrypoint
 RUN chmod 755 /entrypoint
