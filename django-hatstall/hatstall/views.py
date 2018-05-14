@@ -72,10 +72,10 @@ class Conf():
             Conf.shdb_name = shdb_config.get('SHDB_Settings', 'name')
             Conf.shdb_host = shdb_config.get('SHDB_Settings', 'host')
         else:
-            Conf.shdb_user = os.getenv('SHDB_USER', 'user')
+            Conf.shdb_user = os.getenv('SHDB_USER', 'sortinghat')
             Conf.shdb_pass = os.getenv('SHDB_PASSWORD', 'password')
-            Conf.shdb_name = os.getenv('SHDB_NAME', 'db_name')
-            Conf.shdb_host = os.getenv('SHDB_HOST', 'db_host')
+            Conf.shdb_name = os.getenv('SHDB_NAME', 'sortinghat')
+            Conf.shdb_host = os.getenv('SHDB_HOST', 'sortinghatdb')
 
 
     @staticmethod
