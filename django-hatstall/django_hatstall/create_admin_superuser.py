@@ -35,9 +35,9 @@ from django.contrib.auth.management.commands.createsuperuser import get_user_mod
 from django_hatstall.settings import DATABASES
 
 admin_db = list(DATABASES.keys())[0]
-admin_user = os.getenv('HATSTALL_ADMIN_USER','admin')
-admin_pass = os.getenv('HATSTALL_ADMIN_PASS','admin')
-admin_mail = os.getenv('HATSTALL_ADMIN_MAIL','admin@example.com')
+admin_user = os.getenv('HATSTALL_ADMIN_USER', 'admin')
+admin_pass = os.getenv('HATSTALL_ADMIN_PASS', 'admin')
+admin_mail = os.getenv('HATSTALL_ADMIN_MAIL', 'admin@example.com')
 
 db_manager = get_user_model()._default_manager.db_manager(admin_db)
 try:

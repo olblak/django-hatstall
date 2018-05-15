@@ -77,7 +77,6 @@ class Conf():
             Conf.shdb_name = os.getenv('SHDB_NAME', 'sortinghat')
             Conf.shdb_host = os.getenv('SHDB_HOST', 'sortinghatdb')
 
-
     @staticmethod
     def check_conf():
         """
